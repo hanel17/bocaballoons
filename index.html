@@ -3,6 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:site_name" content="Bocaballoons RD">
+<meta property="og:type" content="website">
+<meta property="og:url" id="ogUrl" content="https://bocaballoons.vercel.app">
+<meta property="og:title" id="ogTitle" content="Bocaballoons RD – Bocadillos & Postres">
+<meta property="og:description" id="ogDesc" content="Endulzamos tus momentos con postres artesanales y bocadillos irresistibles hechos con amor.">
+<meta property="og:image" id="ogImage" content="">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" id="twTitle" content="Bocaballoons RD">
+<meta name="twitter:description" id="twDesc" content="Postres artesanales y bocadillos irresistibles.">
 <title>Bocaballoons RD – Bocadillos & Postres</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;0,900;1,300;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -153,6 +162,49 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--cream);color:va
 .oab-sub{font-size:0.82rem;color:#b45309;line-height:1.5;}
 .oab-cta{margin-top:10px;background:#d97706;color:white;border:none;border-radius:100px;padding:9px 18px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all 0.2s;}
 .oab-cta:hover{background:#b45309;}
+/* ─── SHARE ─── */
+.share-btn{position:absolute;top:10px;right:10px;width:32px;height:32px;background:rgba(255,255,255,0.95);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:0.9rem;z-index:3;opacity:0;transform:scale(0.8);transition:all 0.25s;box-shadow:0 2px 8px rgba(0,0,0,0.15);}
+.product-card:hover .share-btn{opacity:1;transform:scale(1);}
+.evento-card .share-btn{opacity:1;transform:scale(1);top:12px;right:48px;}
+.share-sheet{display:none;position:fixed;inset:0;background:rgba(26,5,16,0.7);z-index:3000;align-items:flex-end;justify-content:center;backdrop-filter:blur(8px);}
+.share-sheet.active{display:flex;}
+.share-box{background:var(--cream);border-radius:28px 28px 0 0;width:100%;max-width:480px;padding:28px 24px 36px;animation:slideUp 0.3s cubic-bezier(.175,.885,.32,1.275);}
+.share-handle{width:40px;height:4px;background:var(--blush);border-radius:2px;margin:0 auto 20px;}
+.share-product-preview{display:flex;gap:14px;align-items:center;background:white;border-radius:16px;padding:14px;margin-bottom:20px;border:1px solid var(--blush);}
+.share-product-img{width:64px;height:64px;border-radius:12px;object-fit:cover;background:var(--rose-pale);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.8rem;}
+.share-product-name{font-family:"Fraunces",serif;font-weight:700;font-size:1rem;color:var(--ink);margin-bottom:4px;}
+.share-product-price{font-family:"Fraunces",serif;font-weight:700;color:var(--rose);font-size:0.95rem;}
+.share-title{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:16px;}
+.share-options{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px;}
+.share-option{display:flex;flex-direction:column;align-items:center;gap:8px;background:white;border:1.5px solid var(--blush);border-radius:16px;padding:16px 8px;cursor:pointer;transition:all 0.2s;font-size:0.75rem;font-weight:600;color:var(--muted);}
+.share-option:hover{border-color:var(--rose);color:var(--rose);transform:translateY(-2px);}
+.share-option .so-icon{font-size:1.8rem;}
+.share-link-box{display:flex;gap:8px;align-items:center;background:white;border:1.5px solid var(--blush);border-radius:14px;padding:10px 14px;}
+.share-link-text{flex:1;font-size:0.78rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:monospace;}
+.share-copy-btn{background:var(--rose);color:white;border:none;border-radius:10px;padding:8px 14px;font-size:0.78rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:all 0.2s;font-family:"Plus Jakarta Sans",sans-serif;}
+.share-copy-btn:hover{background:var(--rose-deep);}
+.share-close-btn{width:100%;background:var(--rose-pale);color:var(--muted);border:none;border-radius:14px;padding:12px;font-size:0.9rem;cursor:pointer;margin-top:12px;font-family:"Plus Jakarta Sans",sans-serif;}
+
+/* ─── DEEP LINK PRODUCT SPOTLIGHT ─── */
+.spotlight-overlay{display:none;position:fixed;inset:0;background:rgba(26,5,16,0.85);z-index:2500;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(12px);}
+.spotlight-overlay.active{display:flex;}
+.spotlight-box{background:var(--cream);border-radius:28px;width:100%;max-width:480px;overflow:hidden;animation:modalUp 0.4s cubic-bezier(.175,.885,.32,1.275);}
+.spotlight-img{width:100%;height:260px;object-fit:cover;background:var(--rose-pale);}
+.spotlight-img-ph{width:100%;height:260px;display:flex;align-items:center;justify-content:center;font-size:6rem;background:linear-gradient(135deg,var(--rose-pale),var(--blush));}
+.spotlight-body{padding:24px;}
+.spotlight-badge{display:inline-block;background:var(--rose);color:white;border-radius:100px;padding:4px 12px;font-size:0.7rem;font-weight:700;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.5px;}
+.spotlight-name{font-family:"Fraunces",serif;font-size:1.6rem;font-weight:900;color:var(--ink);letter-spacing:-1px;margin-bottom:8px;}
+.spotlight-desc{color:var(--muted);font-size:0.88rem;line-height:1.6;margin-bottom:16px;}
+.spotlight-price{font-family:"Fraunces",serif;font-size:2rem;font-weight:900;color:var(--rose);margin-bottom:20px;}
+.spotlight-actions{display:flex;gap:10px;}
+.spotlight-add{flex:1;background:var(--rose);color:white;border:none;border-radius:14px;padding:16px;font-size:0.95rem;font-weight:700;cursor:pointer;font-family:"Plus Jakarta Sans",sans-serif;transition:all 0.2s;}
+.spotlight-add:hover{background:var(--rose-deep);}
+.spotlight-close{width:44px;height:44px;background:var(--rose-pale);border:none;border-radius:12px;cursor:pointer;font-size:1.1rem;}
+
+/* ─── COPIED TOAST ─── */
+.copied-flash{position:fixed;bottom:120px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:white;border-radius:100px;padding:10px 20px;font-size:0.82rem;font-weight:600;opacity:0;transition:all 0.3s;z-index:9999;pointer-events:none;}
+.copied-flash.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
 /* ─── EMPTY STATE ─── */
 .empty-state{text-align:center;padding:60px 20px;}
 .empty-icon{font-size:4rem;margin-bottom:16px;opacity:0.4;}
@@ -822,6 +874,52 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--cream);color:va
   </div>
 </div>
 
+
+<!-- SHARE SHEET -->
+<div class="share-sheet" id="shareSheet" onclick="if(event.target===this)closeShare()">
+  <div class="share-box">
+    <div class="share-handle"></div>
+    <div class="share-product-preview" id="sharePreview"></div>
+    <div class="share-title">Compartir con alguien 🎀</div>
+    <div class="share-options">
+      <div class="share-option" onclick="shareWA()">
+        <span class="so-icon">💬</span>WhatsApp
+      </div>
+      <div class="share-option" onclick="shareIG()">
+        <span class="so-icon">📸</span>Instagram
+      </div>
+      <div class="share-option" onclick="shareNative()">
+        <span class="so-icon">📤</span>Más opciones
+      </div>
+    </div>
+    <div class="share-link-box">
+      <span class="share-link-text" id="shareLinkText"></span>
+      <button class="share-copy-btn" onclick="copyShareLink()">Copiar 📋</button>
+    </div>
+    <button class="share-close-btn" onclick="closeShare()">Cerrar</button>
+  </div>
+</div>
+
+<!-- SPOTLIGHT (deep link view) -->
+<div class="spotlight-overlay" id="spotlightOverlay">
+  <div class="spotlight-box">
+    <div id="spotlightImgWrap"></div>
+    <div class="spotlight-body">
+      <div class="spotlight-badge" id="spotlightBadge">Producto</div>
+      <div class="spotlight-name" id="spotlightName"></div>
+      <div class="spotlight-desc" id="spotlightDesc"></div>
+      <div class="spotlight-price" id="spotlightPrice"></div>
+      <div class="spotlight-actions">
+        <button class="spotlight-add" id="spotlightAddBtn">🛒 Agregar al carrito</button>
+        <button class="spotlight-close" onclick="closeSpotlight()">✕</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COPIED FLASH -->
+<div class="copied-flash" id="copiedFlash">✅ Link copiado!</div>
+
 <script>
 // ─── CONFIG ───
 const SUPABASE_URL='https://uzmcgraxbyowzgpjbgkf.supabase.co';
@@ -922,6 +1020,7 @@ async function init(){
     const pc=document.getElementById('heroProductCount');if(pc)pc.textContent=products.length+'+';
   }catch(e){console.error(e);showToast('⚠️ Error conectando','error');}
   setTimeout(()=>{const ls=document.getElementById('loadingScreen');ls.classList.add('out');setTimeout(()=>ls.style.display='none',600);},1400);
+  handleDeepLink();
 }
 document.addEventListener('DOMContentLoaded',init);
 
@@ -1000,6 +1099,7 @@ function productHTML(p){
     <div class="product-img-wrap">
       ${img}
       <button class="product-quick-add" onclick="event.stopPropagation();quickAdd('${p.id}')">+</button>
+      <button class="share-btn" onclick="event.stopPropagation();openShare('product','${p.id}')" title="Compartir">🔗</button>
     </div>
     <div class="product-body">
       <div class="product-name">${p.name}</div>
@@ -1026,7 +1126,10 @@ function renderEvents(){
         <div class="evento-desc">${e.description||''}</div>
         ${inc.length?`<div class="evento-includes"><div class="evento-includes-title">✨ Incluye</div><div class="evento-includes-list">${inc.map(i=>'• '+i).join('<br>')}</div></div>`:''}
         ${price}
-        <button class="evento-cta" onclick="openEvtInquiry('${e.title}')">Consultar por WhatsApp 💬</button>
+        <div style="display:flex;gap:8px;">
+          <button class="evento-cta" style="flex:1" onclick="openEvtInquiry('${e.title}')">Consultar 💬</button>
+          <button class="evento-cta" style="width:44px;flex-shrink:0;background:var(--rose-pale);color:var(--rose)" onclick="event.stopPropagation();openShare('event','${e.id}')">🔗</button>
+        </div>
       </div>
     </div>`;
   }).join('');
@@ -1387,6 +1490,145 @@ function exportCSV(type){
   const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
   const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=fn+'.csv';a.click();URL.revokeObjectURL(url);
   showToast('📊 CSV exportado!','success');
+}
+
+
+// ─── SHARE SYSTEM ───
+const SITE_URL = 'https://bocaballoons.vercel.app';
+let currentShare = null;
+
+function openShare(type, id) {
+  const item = type==='product'
+    ? products.find(x=>x.id===id)
+    : events.find(x=>x.id===id);
+  if(!item) return;
+  currentShare = {type, id, item};
+  const url = `${SITE_URL}?${type}=${id}`;
+  document.getElementById('shareLinkText').textContent = url;
+  const preview = document.getElementById('sharePreview');
+  const name = item.name || item.title;
+  const price = type==='product' ? `RD$${Number(item.price).toLocaleString()}` : (item.price>0?`Desde RD$${Number(item.price).toLocaleString()}`:'A consultar');
+  const imgHTML = item.img
+    ? `<img class="share-product-img" src="${item.img}" style="object-fit:cover">`
+    : `<div class="share-product-img">${type==='product'?'🍰':'🎉'}</div>`;
+  preview.innerHTML = `${imgHTML}<div><div class="share-product-name">${name}</div><div class="share-product-price">${price}</div></div>`;
+  document.getElementById('shareSheet').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+
+function closeShare() {
+  document.getElementById('shareSheet').classList.remove('active');
+  document.body.style.overflow='';
+}
+
+function getShareUrl() {
+  if(!currentShare) return SITE_URL;
+  return `${SITE_URL}?${currentShare.type}=${currentShare.id}`;
+}
+
+function getShareText() {
+  if(!currentShare) return 'Bocaballoons RD';
+  const item = currentShare.item;
+  const name = item.name || item.title;
+  const price = currentShare.type==='product' ? `RD$${Number(item.price).toLocaleString()}` : '';
+  return `¡Mira esto de Bocaballoons! 🍰\n*${name}* ${price}\n\nPídelo aquí 👇`;
+}
+
+function shareWA() {
+  const text = encodeURIComponent(getShareText() + '\n' + getShareUrl());
+  window.open(`https://wa.me/?text=${text}`, '_blank');
+  closeShare();
+}
+
+function shareIG() {
+  copyShareLink();
+  showToast('📋 Link copiado — pégalo en tu historia de Instagram!', 'success');
+  closeShare();
+}
+
+function shareNative() {
+  const url = getShareUrl();
+  const item = currentShare?.item;
+  const title = item?.name || item?.title || 'Bocaballoons RD';
+  if(navigator.share) {
+    navigator.share({ title, text: getShareText(), url }).catch(()=>{});
+  } else {
+    copyShareLink();
+  }
+  closeShare();
+}
+
+function copyShareLink() {
+  const url = getShareUrl();
+  if(navigator.clipboard) {
+    navigator.clipboard.writeText(url).then(()=>flashCopied());
+  } else {
+    const el = document.createElement('textarea');
+    el.value = url; document.body.appendChild(el);
+    el.select(); document.execCommand('copy');
+    document.body.removeChild(el); flashCopied();
+  }
+}
+
+function flashCopied() {
+  const el = document.getElementById('copiedFlash');
+  el.classList.add('show');
+  setTimeout(()=>el.classList.remove('show'), 2200);
+}
+
+// ─── DEEP LINK HANDLER (reads URL params on load) ───
+function handleDeepLink() {
+  const params = new URLSearchParams(window.location.search);
+  const productId = params.get('producto') || params.get('product');
+  const eventId = params.get('evento') || params.get('event');
+  if(productId) {
+    // Wait for products to load then show spotlight
+    const tryShow = (tries=0) => {
+      const p = products.find(x=>x.id===productId);
+      if(p) { showSpotlight('product', p); }
+      else if(tries < 20) { setTimeout(()=>tryShow(tries+1), 300); }
+    };
+    tryShow();
+  } else if(eventId) {
+    const tryShow = (tries=0) => {
+      const e = events.find(x=>x.id===eventId);
+      if(e) { showSpotlight('event', e); }
+      else if(tries < 20) { setTimeout(()=>tryShow(tries+1), 300); }
+    };
+    tryShow();
+  }
+}
+
+function showSpotlight(type, item) {
+  const name = item.name || item.title;
+  const price = type==='product' ? `RD$${Number(item.price).toLocaleString()}` : (item.price>0?`Desde RD$${Number(item.price).toLocaleString()}`:'Precio a consultar');
+  const imgWrap = document.getElementById('spotlightImgWrap');
+  imgWrap.innerHTML = item.img
+    ? `<img class="spotlight-img" src="${item.img}" alt="${name}">`
+    : `<div class="spotlight-img-ph">${type==='product'?'🍰':'🎉'}</div>`;
+  document.getElementById('spotlightBadge').textContent = type==='product' ? '🍰 Producto' : '🎉 Evento';
+  document.getElementById('spotlightName').textContent = name;
+  document.getElementById('spotlightDesc').textContent = type==='product' ? (item.description||'') : (item.description||'');
+  document.getElementById('spotlightPrice').textContent = price;
+  const addBtn = document.getElementById('spotlightAddBtn');
+  if(type==='product') {
+    addBtn.textContent = '🛒 Agregar al carrito';
+    addBtn.onclick = () => { addCart(item.id, 1); closeSpotlight(); showToast('🛒 '+name+' agregado!','success'); };
+  } else {
+    addBtn.textContent = '💬 Consultar por WhatsApp';
+    addBtn.onclick = () => { openEvtInquiry(name); closeSpotlight(); };
+  }
+  document.getElementById('spotlightOverlay').classList.add('active');
+  document.body.style.overflow='hidden';
+  // Scroll to the right section
+  const cat = item.category || 'eventos';
+  const navBtn = document.querySelector(`[data-sec="${cat==='eventos'?'eventos':cat}"]`);
+  if(navBtn) showSection(cat==='eventos'?'eventos':cat, navBtn);
+}
+
+function closeSpotlight() {
+  document.getElementById('spotlightOverlay').classList.remove('active');
+  document.body.style.overflow='';
 }
 
 // ─── TOAST ───
